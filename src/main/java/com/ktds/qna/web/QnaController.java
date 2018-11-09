@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ktds.qna.service.QnaService;
 import com.ktds.qna.vo.QnaVO;
@@ -21,10 +22,16 @@ public class QnaController {
 	}
 	
 	@PostMapping("/qna/regist")
-	public String doOneQnaRegistAction(@ModelAttribute QnaVO qnaVO) {
-		this.qnaService.registOneQna(qnaVO);
+	@ResponseBody
+	public boolean doOneQnaRegistAction(@ModelAttribute QnaVO qnaVO) {
+		boolean isRegist = this.qnaService.registOneQna(qnaVO);
 		System.out.println("QnaController" + qnaVO.getContent());
-		return "qna/regist";
+		return isRegist;
+	}
+	
+	@GetMapping("/qna")
+	public String viewQnaListPage() {
+		return "qna/list";
 	}
 	
 }
