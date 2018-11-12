@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QnaDao">
+
+<insert id="insertOneQna" parameterType="QnaVO">
+INSERT	INTO	QNA (
+						QNA_ID
+						, TITLE
+						, CONTENT
+						, REG_DATE
+						, EMAIL
+					)
+VALUES				(
+						NEXTVALUE('QA',QNA_ID_SEQ.NEXTVAL)
+						, #{title}
+						, #{content}
+						, SYSDATE
+						, 'rudwnsdl93@naver.com'
+					)
+</insert>
+
+<update id="updateOneQna" parameterType="QnaVO">
+	UPDATE	QNA
+	SET		TITLE = #{title}
+			, CONTENT = #{content}
+			, REG_DATE = SYSDATE
+	WHERE	QNA_ID = #{qnaId}
+</update>
+
+<resultMap type="QnaVO" id="qnaVO">
+	<id column="QNA_ID" property="qnaId"/>
+	<result column="RNUM" property="rnum"/>
+	<result column="TITLE" property="title"/>
+	<result column="CONTENT" property="content"/>
+	<result column="REG_DATE" property="regDate"/>
+	<result column="Q_EMAIL" property="email"/>
+	<association property="memberVO" javaType="MemberVO">
+		<id column="M_EMAIL" property="email"/>
+		<result column="NAME" property="name"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="SALT" property="salt"/>
+		<result column="LOGIN_FAIL_COUNT" property="loginFailCount"/>
+		<result column="LAST_LOGIN" property="lastLogin"/>
+		<result column="ADMIN_YN" property="adminYN"/>
+	</association>
+</resultMap>
+
+
+<select id="selectOneQna" parameterType="string" resultMap="qnaVO">
+	SELECT	M.EMAIL M_EMAIL
+			, M.NAME
+			, M.PASSWORD
+			, M.SALT
+			, M.LOGIN_FAIL_COUNT
+			, M.LAST_LOGIN
+			, M.ADMIN_YN
+			, Q.QNA_ID
+			, Q.TITLE
+			, Q.CONTENT
+			, Q.REG_DATE
+			, Q.EMAIL Q_EMAIL
+	FROM	MEMBER M
+			, QNA Q
+	WHERE	QNA_ID = #{qnaId}
+</select>
+
+<select id="selectAllQna" parameterType="QnaSearchVO" resultMap="qnaVO">
+	SELECT	*
+	FROM	(
+				SELECT	A.*
+						,	ROWNUM RNUM
+				FROM	(
+							SELECT	M.EMAIL M_EMAIL
+									, M.NAME
+									, M.PASSWORD
+									, M.SALT
+									, M.LOGIN_FAIL_COUNT
+									, M.LAST_LOGIN
+									, M.ADMIN_YN
+									, Q.QNA_ID
+									, Q.TITLE
+									, Q.CONTENT
+									, Q.REG_DATE
+									, Q.EMAIL Q_EMAIL
+							FROM	MEMBER M
+									, QNA Q
+							<if test="searchKeyword != null and searchKeyword != '' ">
+							WHERE	TITLE LIKE '%' || #{searchKeyword} || '%'
+							</if>
+							ORDER BY QNA_ID DESC
+						) A
+				WHERE	ROWNUM <![CDATA[<=]]> #{endRow}
+			)
+	WHERE	RNUM >= #{startRow}
+</select>
+
+<select id="selectAllQnaCount" parameterType="QnaSearchVO" resultType="_int">
+	SELECT	COUNT(1)
+	FROM	QNA
+	<if test="searchKeyword != null and searchKeyword != '' ">
+	WHERE	TITLE	LIKE '%' || #{searchKeyword} || '%'
+	</if>
+</select>
+</mapper>
