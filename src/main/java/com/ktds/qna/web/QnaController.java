@@ -49,7 +49,6 @@ public class QnaController {
 	
 	@RequestMapping("/qna")
 	public ModelAndView viewQnaListPage(@ModelAttribute QnaSearchVO qnaSearchVO, HttpServletRequest request, HttpSession session) {
-		// 전체 검색 or 상세 -> 목록 or 글쓰기
 				if ( qnaSearchVO.getSearchKeyword() == null ) {
 					qnaSearchVO = (QnaSearchVO) session.getAttribute(Session.QNASEARCH);
 					if ( qnaSearchVO == null ) {
@@ -58,9 +57,7 @@ public class QnaController {
 					}
 				}
 				
-				//html태그, 게시글, 페이지정보
 				PageExplorer pageExplorer = this.qnaService.readAllQna(qnaSearchVO);
-				
 				
 				session.setAttribute(Session.QNASEARCH, qnaSearchVO);
 				

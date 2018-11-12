@@ -37,8 +37,8 @@ public class MemberController {
 	@GetMapping("/member/logout")
 	public String doMemberLogoutAction(HttpSession session) {
 		// Logout
-		session.invalidate();	//session 다 날려버리기
-		return "redirect:/main/home";
+		session.invalidate();	
+		return "redirect:/index";
 	}
 	
 	@PostMapping("/member/regist")
@@ -65,8 +65,8 @@ public class MemberController {
 		boolean selectCheckEmail = memberService.readOneEmail(email);
 		Map<String, Object> result = new HashMap<>();
 		if (selectCheckEmail) {
-			result.put("status","이미 등록된 email 입니다.");
-			result.put("duplicated", selectCheckEmail);  // 여기에 select check 한 결과 넣기.
+			result.put("status","이미 등록된 이메일입니다.");
+			result.put("duplicated", selectCheckEmail);  
 		}
 		return result;
 	}
