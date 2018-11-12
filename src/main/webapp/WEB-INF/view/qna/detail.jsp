@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-=======
-<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
->>>>>>> d5ec04a9ca167ed519f37fe1557765b7046632fc
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,7 +49,6 @@
 		${qnaVO.content}
 	</div>
 	
-<<<<<<< HEAD
 	<hr/>
 	
 	<div class="reply">
@@ -69,11 +64,10 @@
 			<textarea id="content" name="content"></textarea>
 			<input type="button" id="replyReg" value="등록" />
 		</form:form>
-=======
+	</div>
 	<div>
 		<a href="<c:url value="/qna"/>">목록</a>
 		<a href="<c:url value="/qna/modify/${qnaVO.qnaId}"/>">수정</a>
->>>>>>> d5ec04a9ca167ed519f37fe1557765b7046632fc
 	</div>
 	
 </body>
