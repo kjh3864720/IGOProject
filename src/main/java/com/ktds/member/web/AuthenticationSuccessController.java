@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ktds.User;
+import com.ktds.common.Session;
 import com.ktds.member.service.MemberService;
 import com.ktds.member.vo.MemberVO;
 
@@ -40,8 +41,8 @@ public class AuthenticationSuccessController implements AuthenticationSuccessHan
 		
 		PrintWriter out = response.getWriter();
 		if ( loginMember != null ) {
-			request.setAttribute("_TOKEN_", user.getToken());
-			request.setAttribute("_USER_", loginMember);
+			request.setAttribute(Session.TOKEN, user.getToken());
+			request.setAttribute(Session.USER, loginMember);
 			out.write("loginSuccess");
 		}
 		else {
