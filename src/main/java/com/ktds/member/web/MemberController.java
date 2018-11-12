@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ktds.common.Session;
 import com.ktds.member.service.MemberService;
 import com.ktds.member.validator.MemberValidator;
 import com.ktds.member.vo.MemberVO;
@@ -83,7 +84,7 @@ public class MemberController {
 				result.put("message", errorMessage);
 			}
 			result.put("status", false);
-			session.setAttribute("_VAILDCHECK_", memberVO);
+			session.setAttribute(Session.VALIDCHECK, memberVO);
 			return result;
 		}
 		result.put("status", true);
