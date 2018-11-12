@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ktds.qna.service.QnaService;
 import com.ktds.qna.vo.QnaVO;
+import com.ktds.reply.vo.ReplyVO;
 
 @Controller
 public class QnaController {
@@ -45,7 +46,11 @@ public class QnaController {
 	public ModelAndView viewQnaDetailPage(@PathVariable String qnaId) {
 		ModelAndView view = new ModelAndView("qna/detail");
 		QnaVO qnaVO = this.qnaService.readOneQna(qnaId);
+		
+		List<ReplyVO> replyList = this.qnaService.readRepliesByQna(qnaId);
+		
 		view.addObject("qnaVO", qnaVO);
+		view.addObject("replyList", replyList);
 		return view;
 	}
 	

@@ -7,12 +7,17 @@ import org.springframework.stereotype.Service;
 
 import com.ktds.qna.biz.QnaBiz;
 import com.ktds.qna.vo.QnaVO;
+import com.ktds.reply.biz.ReplyBiz;
+import com.ktds.reply.vo.ReplyVO;
 
 @Service
 public class QnaServiceImpl implements QnaService {
 	
 	@Autowired
 	private QnaBiz qnaBiz;
+	
+	@Autowired
+	private ReplyBiz replyBiz;
 	
 	@Override
 	public boolean registOneQna(QnaVO qnaVO) {
@@ -28,5 +33,11 @@ public class QnaServiceImpl implements QnaService {
 	public List<QnaVO> readAllQna() {
 		return this.qnaBiz.readAllQna();
 	}
+
+	@Override
+	public List<ReplyVO> readRepliesByQna(String qnaId) {
+		return this.replyBiz.selectReplyList(qnaId);
+	}
+	
 
 }

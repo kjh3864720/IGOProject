@@ -3,6 +3,7 @@ package com.ktds.qna.service;
 import java.util.List;
 
 import com.ktds.qna.vo.QnaVO;
+import com.ktds.reply.vo.ReplyVO;
 
 public interface QnaService {
 	
@@ -12,4 +13,5 @@ public interface QnaService {
 	
 	public List<QnaVO> readAllQna();
 
+	public List<ReplyVO> readRepliesByQna(String qnaId);
 }
