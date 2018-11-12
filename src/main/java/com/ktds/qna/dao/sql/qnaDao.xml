@@ -22,4 +22,56 @@ VALUES				(
 					)
 </insert>
 
+<resultMap type="QnaVO" id="qnaVO">
+	<id column="QNA_ID" property="qnaId"/>
+	<result column="TITLE" property="title"/>
+	<result column="CONTENT" property="content"/>
+	<result column="REG_DATE" property="regDate"/>
+	<result column="Q_EMAIL" property="email"/>
+	<association property="memberVO" javaType="MemberVO">
+		<id column="M_EMAIL" property="email"/>
+		<result column="NAME" property="name"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="SALT" property="salt"/>
+		<result column="LOGIN_FAIL_COUNT" property="loginFailCount"/>
+		<result column="LAST_LOGIN" property="lastLogin"/>
+		<result column="ADMIN_YN" property="adminYN"/>
+	</association>
+</resultMap>
+
+
+<select id="selectOneQna" parameterType="string" resultMap="qnaVO">
+	SELECT	M.EMAIL M_EMAIL
+			, M.NAME
+			, M.PASSWORD
+			, M.SALT
+			, M.LOGIN_FAIL_COUNT
+			, M.LAST_LOGIN
+			, M.ADMIN_YN
+			, Q.QNA_ID
+			, Q.TITLE
+			, Q.CONTENT
+			, Q.REG_DATE
+			, Q.EMAIL Q_EMAIL
+	FROM	MEMBER M
+			, QNA Q
+	WHERE	QNA_ID = #{qnaId}
+</select>
+
+<select id="selectAllQna" parameterType="string" resultMap="qnaVO">
+	SELECT	M.EMAIL M_EMAIL
+			, M.NAME
+			, M.PASSWORD
+			, M.SALT
+			, M.LOGIN_FAIL_COUNT
+			, M.LAST_LOGIN
+			, M.ADMIN_YN
+			, Q.QNA_ID
+			, Q.TITLE
+			, Q.CONTENT
+			, Q.REG_DATE
+			, Q.EMAIL Q_EMAIL
+	FROM	MEMBER M
+			, QNA Q
+</select>
 </mapper>

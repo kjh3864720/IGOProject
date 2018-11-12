@@ -1,5 +1,7 @@
 package com.ktds.qna.biz;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,16 @@ public class QnaBizImpl implements QnaBiz {
 	@Override
 	public boolean registOneQna(QnaVO qnaVO) {
 		return this.qnaDao.insertOneQna(qnaVO) > 0;
+	}
+	
+	@Override
+	public QnaVO readOneQna(String qnaId) {
+		return this.qnaDao.selectOneQna(qnaId);
+	}
+	
+	@Override
+	public List<QnaVO> readAllQna() {
+		return this.qnaDao.selectAllQna();
 	}
 
 }
