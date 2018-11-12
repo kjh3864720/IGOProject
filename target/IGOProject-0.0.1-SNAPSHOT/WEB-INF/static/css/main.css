@@ -1,0 +1,444 @@
+@charset "utf-8";
+/* I GO main.css*/
+
+@import url("common.css");
+@import url("core.css");
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Nanum+Gothic');
+@import url("subCom.css");
+@import url("search.css");
+
+
+/*************** 2. banner.CSS ***************/
+
+/******** 배너영역 **********/
+#banner{
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 850px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	margin-top: 80px;	
+	overflow: hidden;	
+}
+
+/*배너박스*/
+#slider{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 500%;
+	height: 100%;
+}
+
+#slider>li{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 33.3%;
+	height: 100%;
+	transition: opacity .8s ease-in-out;	
+}
+
+#slider .mainTxt{
+	position: absolute;
+	display: block;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 25px;
+	width: 80%
+}
+
+#slider .mainTxt span{
+	font-size: 45px;
+}
+
+#slider .mainTxt a{
+	color: #fff;
+	line-height: 60px;
+	text-shadow: 2px 2px 1px #333;	
+}
+
+/*opacity가 1로 변경될 class*/
+.opaView{
+	opacity: 1 !important;/*우선적용*/
+	z-index: 2;/*보이는 li를 가장위로 올리기*/
+	cursor: pointer;/*손가락모양*/
+}
+
+
+
+
+
+/*각 배너 li 배경이미지 셋팅*/
+#slider>li:nth-child(1){
+	background: url(../images/ban01.jpg) no-repeat 0/cover;
+}
+#slider>li:nth-child(2){
+	background: url(../images/ban02.jpg) no-repeat 0/cover;
+}
+
+#slider>li:nth-child(3){
+	background: url(../images/ban03.jpg) no-repeat 0/cover;
+}
+
+
+.inbox{
+	position: relative;
+	width: 100%;
+	max-width: 1000px;
+	height: 100%;
+	min-height: 500px;
+	margin: 0 auto;	
+}
+
+.abtn{
+	position: absolute;
+	display: block;
+	font-size: 50px;
+	color: #fff;
+	font-family: FontAwesome;
+	font-style: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;	
+	top: 60%;
+	transform: translateY(-50%);/*세로중앙이동*/
+	width: 45px;
+	height: 59px;
+	z-index: 3;
+	text-shadow: 2px 2px 1px #333;
+
+}
+
+.ab1{/*왼쪽버튼*/
+	left: 25px;
+}
+.ab2{/*오른쪽버튼*/
+	right: 25px;	
+}
+/*이동버튼에 마우스 오버시 배경이미지 위치변경하기*/
+.abtn:hover{
+	background-position: 0 -49px;/*y축 위로 이동*/
+	color: #21a6a9;
+}
+
+/*블릿버튼박스*/
+.bulletBox{
+	font-size: 20px;
+	position: absolute;/*나의부모는? .inbox*/
+	width: 100%;
+	text-align: center;
+	left: 50%;	
+	transform: translateX(-50%);
+	bottom: 20%;
+	z-index: 3;/*li보다 위에 (보이는 li가 z-index가 1이므로)*/
+}
+.bulletBox a{
+	color: #fff;
+	margin: 0 15px;
+	font-size: 1.1em;
+	text-shadow: 2px 2px 1px #333;
+}
+
+.bulletBox a:hover{
+	color: #1eb4cf;
+	
+}
+
+.bulletBox a:active {
+	font-weight: bold;
+}
+
+.bulletBox > a > span{
+	color: #EBCF71;
+	margin-right: 2px;
+}
+
+/********* 하단 # 텍스트 를 그냥 블릿버튼으로 사용하고 싶을 때 ******************/
+
+
+/*
+
+.swiper-pagination{
+	font-size: 120px;
+	position: absolute;
+	width: 300px;
+	text-align: center;
+	left: 50%;	
+	transform: translateX(-50%);
+	bottom: 20%;
+	z-index: 4;
+	color:#fff;
+}
+
+.swiper-pagination-bullet {
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #fff;
+    opacity: .8;
+    outline: none;
+    box-shadow: 2px 2px 1px #333;
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #1eb4cf;
+}
+*/
+
+/******** 모바일 *********/
+@media only screen and (max-width: 740px){
+#banner{
+	height: auto;
+	max-height: 480px;	
+	margin-top: 0px;
+}
+	
+
+	
+.abtn{
+	font-size: 30px;
+	width: 25px;
+	height: 49px;
+}
+	
+#slider .mainTxt{
+	font-size: 20px;
+}	
+	
+#slider .mainTxt span{
+	font-size: 25px;
+	line-height: 20px;
+}
+	
+.bulletBox a{
+	font-size: 16px;
+}
+}
+
+
+/*************** 3. 검색 영역 ***************/
+#searchWrap{
+	position: relative;
+	width: 100%;
+	max-width: 1300px;
+	height: auto;
+	min-height: 450px;
+	margin: 0 auto;	
+	padding: 0;
+	margin-top: 30px;
+	text-align: center;
+}
+
+#searchWrap h2{
+	margin-bottom: 20px;
+}
+
+.searchBox{
+	position: relative;
+	margin: 0 auto;
+	width: 62%;
+	height: 50px;
+	margin-bottom: 50px;
+	margin-top: 30px;
+	box-sizing: border-box;
+}
+
+.searchBar{
+	position: relative;
+	display: block;
+	top: 0px;
+	width: 100%;
+	height: 50px;
+	border: 1px solid #063768;
+	border-radius: 55px;
+	margin-bottom: 30px;	
+	margin: 0 auto;	
+	padding-left: 20px;
+}
+
+.ion-md-search{
+	position: absolute;
+	right: 5px;
+	top: 15px;
+	font-size: 30px;
+}
+
+.searchList{
+	position: relative;
+	display: block;
+	margin: 0 auto;	
+	width: 100%;
+	max-width: 1300px;
+	height: auto;
+	min-height: 300px;	
+	border: 1px solid #cccccc;
+	border-radius: 15px;
+	background-color: #ededed;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.searchList>ul{
+	position: relative;
+	display: block;
+	width: 100%;
+	max-width: 1300px;
+	height: auto;
+	min-height: 300px;
+	padding: 10px 8px;
+	box-sizing: border-box;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.searchList>ul>li{
+	position: relative;	
+	display: inline-block;
+/*	width: auto;*/
+	min-width: 100px;	
+	height: auto;
+	min-height: 70px;		
+	margin: 5px 3px;
+	float:left;
+	line-height: 80px;
+	border-radius: 8px;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	text-align: center;
+	padding: 0 5px;
+	
+}
+
+.searchList>ul>li a{
+	color: #fff;
+}
+
+.searchList>ul>li:after{
+	content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.4);
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+
+.searchList>ul>li:hover:after{
+	width: 120%;
+    background-color: rgba(255,255,255,0);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;	
+}
+
+/**1번 size(작은순서)**/	
+.searchList>ul>li:nth-child(1), 	
+.searchList>ul>li:nth-child(10){	
+	min-width: 10%;	
+	font-size: 13px;
+	padding: 0 5px;
+	background-color: rgba(102, 153, 153, 0.7);
+}
+
+/**2번 size**/
+.searchList>ul>li:nth-child(5),   
+.searchList>ul>li:nth-child(7) {	
+	min-width: 14%;
+	font-size: 15px;
+	background-color: rgba(0, 51, 102, 0.4);	
+}
+
+/**3번 size**/
+.searchList>ul>li:nth-child(2),  
+.searchList>ul>li:nth-child(9) {	
+	min-width: 17.4%;
+	font-size: 17px;
+	background-color: rgba(0, 102, 153, 0.5);
+}
+
+ /**4번 size**/
+.searchList>ul>li:nth-child(4),   
+.searchList>ul>li:nth-child(8){	
+	min-width: 25%;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: rgba(0, 51, 102, 0.61);
+}
+
+/**5번 size(제일 큼)**/
+.searchList>ul>li:nth-child(3), 
+.searchList>ul>li:nth-child(6){	
+	min-width: 30%;
+	font-size: 25px;
+	font-weight: bold;
+	background-color: rgba(0, 51, 102, 0.8);
+	padding: 0 10px;
+}
+
+
+@media only screen and (max-width: 780px){
+
+.searchBox{	
+	margin-bottom: 30px;
+	margin-top: 20px;	
+}	
+.searchList>ul>li{	
+	min-height: 47px;
+	line-height: 47px;	
+	box-shadow: #999 3px 3px 3px;	
+}
+
+.searchList>ul>li:nth-child(1), 	
+.searchList>ul>li:nth-child(10){	/**1번 size(작은순서)**/		
+	font-size: 13px;	
+}
+
+.searchList>ul>li:nth-child(5),   /**2번 size**/
+.searchList>ul>li:nth-child(7){	
+	font-size: 14px;	
+}
+
+.searchList>ul>li:nth-child(2),  /**3번 size**/
+.searchList>ul>li:nth-child(9){		
+	font-size: 16px;
+}
+
+
+.searchList>ul>li:nth-child(4),    /**4번 size**/
+.searchList>ul>li:nth-child(8){	
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.searchList>ul>li:nth-child(3), /**5번 size(제일 큼)**/
+.searchList>ul>li:nth-child(6){	
+	font-size: 20px;
+}
+}
+
+
+
+
+
+
