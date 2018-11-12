@@ -5,18 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="<c:url value="/css/main.css"/>" rel="stylesheet" type="text/css">
+<link href="/IGOProject/css/main.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
 <link href="https://unpkg.com/ionicons@4.4.6/dist/css/ionicons.min.css" rel="stylesheet">
-<link rel="shortcut icon" href="<c:url value="/img/favicon2.ico"/>" type="image/x-icon">
-<link rel="icon" href="<c:url value="/img/favicon2.ico"/>" type="image/x-icon">
+<link rel="shortcut icon" href="/IGOProject/img/favicon2.ico" type="image/x-icon">
+<link rel="icon" href="/IGOProject/img/favicon2.ico" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css?family=Montserrat|Nanum+Gothic" rel="stylesheet">
-<script src= "/IGOProject/js/common.js" type="text/javascript"></script>
-<script src= "/IGOProject/js/main.js" type="text/javascript"></script>
-<script src= "/IGOProject/js/swiper.min.js" type="text/javascript"></script>
-<!-- <script src= "/IGOProject/js/jquery.mmenu.all.js" type="text/javascript"></script> -->
 <script src= "/IGOProject/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="/IGOProject/js/common.js" type="text/javascript"></script>
+<script src="/IGOProject/js/main.js" type="text/javascript"></script>
+<script src="/IGOProject/js/swiper.min.js" type="text/javascript"></script>
 </head>
 <body>
 	<header id="header">

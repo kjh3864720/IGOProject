@@ -32,10 +32,8 @@
 
 var snum=0;
 
-	//window.addEventListener("load",function(){				
-	$(document).ready(function() {
+	$().ready(function() {
 		var tsts=0;			
-		//document.getElementById("ham").onclick=function(){	
 		$('#ham').on('click', function() {
 			var navi=$("#navM");		
 			if(tsts===0){					
@@ -51,17 +49,14 @@ var snum=0;
 			else if(tsts===1){		
 				navi.hide(300);
 				$(this).html("").addClass("ion-ios-menu");
-				//$(this).html("<i class='ion-md-menu'></i>");
 				tsts=0;
 			}
 		});
 		
-		/////////// 메뉴~~~~~~~~~~~~~~ /////////////			
 		$("#navM ul.sub").hide();
 		$("#navM ul.active li").click(function(){
 			$("ul",this).slideToggle("fast");
 		});
-		///////////// load구역 ////////////////////////////////
 		
         
         $(function() {
@@ -71,7 +66,7 @@ var snum=0;
             });
         });
         	
-	});
+	})
 		
 	
 	
