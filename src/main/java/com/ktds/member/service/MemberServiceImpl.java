@@ -16,5 +16,20 @@ public class MemberServiceImpl implements MemberService {
 	public boolean registOneMember(MemberVO memberVO) {
 		return memberBiz.registOneMember(memberVO);
 	}
+	
+	@Override
+	public MemberVO readOneMember(MemberVO memberVO) {
+		return memberBiz.readOneMember(memberVO);
+	}
+
+	@Override
+	public boolean readOneEmail(String email) {
+		return memberBiz.readOneEmail(email);
+	}
+
+	@Override
+	public boolean isBlockUser(String email) {
+		return memberBiz.isBlockUser(email);
+	}
 
 }

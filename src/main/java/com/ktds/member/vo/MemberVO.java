@@ -1,9 +1,24 @@
 package com.ktds.member.vo;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.ktds.member.validator.MemberValidator;
+
+
 public class MemberVO {
 
+	@NotEmpty(message="이메일은 필수 입력 값입니다.", groups= {MemberValidator.Login.class,MemberValidator.Regist.class})
+	@Email(message="이메일 형식으로 작성해주세요.", groups= {MemberValidator.Login.class,MemberValidator.Regist.class})
 	private String email;
+	@NotEmpty(message="이름은 필수 입력 값입니다.", groups= {MemberValidator.Regist.class})
 	private String name;
+	@NotEmpty(message="비밀번호는 필수 입력 값입니다.", groups= {MemberValidator.Regist.class, MemberValidator.Login.class})
+	@Length(min=8, max=20, groups= {MemberValidator.Regist.class})
+	@Pattern(regexp="((?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,})",message="비밀번호는 8글자 이상 대소문자, 숫자, 특수문자 조합으로 설정해야 합니다.",  groups = {MemberValidator.Regist.class})
 	private String password;
 	private String salt;
 	private int loginFailCount;
