@@ -9,10 +9,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-<<<<<<< HEAD
-=======
                 
->>>>>>> 559af0c520d9395776422c36d3e33ec44aa35dbd
         <property name="context-root" value="IGOProject"/>
                 
         <property name="java-output-path" value="/IGOProject/build/classes"/>
