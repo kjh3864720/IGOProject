@@ -1,14 +1,15 @@
 package com.ktds.qna.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ktds.qna.biz.QnaBiz;
+import com.ktds.qna.vo.QnaSearchVO;
 import com.ktds.qna.vo.QnaVO;
 import com.ktds.reply.biz.ReplyBiz;
 import com.ktds.reply.vo.ReplyVO;
+
+import io.github.seccoding.web.pager.explorer.PageExplorer;
 
 @Service
 public class QnaServiceImpl implements QnaService {
@@ -30,8 +31,13 @@ public class QnaServiceImpl implements QnaService {
 	}
 	
 	@Override
-	public List<QnaVO> readAllQna() {
-		return this.qnaBiz.readAllQna();
+	public PageExplorer readAllQna(QnaSearchVO qnaSearchVO) {
+		return this.qnaBiz.readAllQna(qnaSearchVO);
+	}
+	
+	@Override
+	public boolean modifyOneQna(QnaVO qnaVO) {
+		return this.qnaBiz.modifyOneQna(qnaVO);
 	}
 
 	@Override

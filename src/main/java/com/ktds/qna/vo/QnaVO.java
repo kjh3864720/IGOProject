@@ -5,6 +5,7 @@ import com.nhncorp.lucy.security.xss.XssFilter;
 
 public class QnaVO {
 
+	private int rnum;
 	private String qnaId;
 	private String title;
 	private String content;
@@ -12,6 +13,14 @@ public class QnaVO {
 	private String email;
 
 	private MemberVO memberVO;
+
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 
 	public String getQnaId() {
 		return qnaId;
