@@ -1,13 +1,26 @@
 package com.ktds.qna.vo;
 
+import com.ktds.member.vo.MemberVO;
 import com.nhncorp.lucy.security.xss.XssFilter;
 
 public class QnaVO {
 
+	private int rnum;
 	private String qnaId;
 	private String title;
 	private String content;
 	private String regDate;
+	private String email;
+
+	private MemberVO memberVO;
+
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 
 	public String getQnaId() {
 		return qnaId;
@@ -41,6 +54,22 @@ public class QnaVO {
 
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 
 }

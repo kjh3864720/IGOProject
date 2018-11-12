@@ -7,7 +7,13 @@
 
 	<typeAliases>
 		<typeAlias type="com.ktds.qna.vo.QnaVO" alias="QnaVO"/>
+<<<<<<< HEAD
 		<typeAlias type="com.ktds.member.vo.MemberVO" alias="MemberVO"/>
+=======
+		<typeAlias type="com.ktds.qna.vo.QnaSearchVO" alias="QnaSearchVO"/>
+		<typeAlias type="com.ktds.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.ktds.reply.vo.ReplyVO" alias="ReplyVO"/>
+>>>>>>> 152000cfedf58e03218dd41952158ca19396870d
 	</typeAliases>
 
 </configuration>
