@@ -1,5 +1,7 @@
 package com.ktds.qna.service;
 
+import java.util.List;
+
 import com.ktds.qna.vo.QnaSearchVO;
 import com.ktds.qna.vo.QnaVO;
 import com.ktds.reply.vo.ReplyVO;

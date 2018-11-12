@@ -13,6 +13,7 @@ public interface QnaBiz {
 	
 	public PageExplorer readAllQna(QnaSearchVO qnaSearchVO);
 	
+	
 	public boolean modifyOneQna(QnaVO qnaVO);
 	
 
