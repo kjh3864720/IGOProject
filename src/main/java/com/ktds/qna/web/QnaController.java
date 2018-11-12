@@ -17,6 +17,7 @@ import com.ktds.common.Session;
 import com.ktds.qna.service.QnaService;
 import com.ktds.qna.vo.QnaSearchVO;
 import com.ktds.qna.vo.QnaVO;
+import com.ktds.reply.vo.ReplyVO;
 
 import io.github.seccoding.web.pager.explorer.PageExplorer;
 
@@ -78,7 +79,11 @@ public class QnaController {
 	public ModelAndView viewQnaDetailPage(@PathVariable String qnaId) {
 		ModelAndView view = new ModelAndView("qna/detail");
 		QnaVO qnaVO = this.qnaService.readOneQna(qnaId);
+		
+		List<ReplyVO> replyList = this.qnaService.readRepliesByQna(qnaId);
+		
 		view.addObject("qnaVO", qnaVO);
+		view.addObject("replyList", replyList);
 		return view;
 	}
 	

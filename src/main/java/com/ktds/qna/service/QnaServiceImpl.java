@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.ktds.qna.biz.QnaBiz;
 import com.ktds.qna.vo.QnaSearchVO;
 import com.ktds.qna.vo.QnaVO;
+import com.ktds.reply.biz.ReplyBiz;
+import com.ktds.reply.vo.ReplyVO;
 
 import io.github.seccoding.web.pager.explorer.PageExplorer;
 
@@ -14,6 +16,9 @@ public class QnaServiceImpl implements QnaService {
 	
 	@Autowired
 	private QnaBiz qnaBiz;
+	
+	@Autowired
+	private ReplyBiz replyBiz;
 	
 	@Override
 	public boolean registOneQna(QnaVO qnaVO) {
@@ -34,5 +39,11 @@ public class QnaServiceImpl implements QnaService {
 	public boolean modifyOneQna(QnaVO qnaVO) {
 		return this.qnaBiz.modifyOneQna(qnaVO);
 	}
+
+	@Override
+	public List<ReplyVO> readRepliesByQna(String qnaId) {
+		return this.replyBiz.selectReplyList(qnaId);
+	}
+	
 
 }
