@@ -29,8 +29,13 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@GetMapping("/index")
+	public String viewMainPage() {
+		return "common/index";
+	}
+	
 	@GetMapping("/qna/regist")
-	public String viewTestPage() {
+	public String viewRegistPage() {
 		return "qna/regist";
 	}
 	
