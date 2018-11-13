@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NoticeDao">
+			
+	<resultMap type="NoticeVO" id="noticeResultMap">
+		<id property="id" column="ID" />
+		<result property="subject" column="SUBJECT" />
+		<result property="content" column="CONTENT" />
+		<result property="email" column="B_EMAIL" />
+		<result property="crtDt" column="CRT_DT" />
+		<result property="mdfyDt" column="MDFY_DT" />
+		<result property="fileName" column="FILE_NAME" />
+		<result property="originFileName" column="ORIGIN_FILE_NAME" />
+		<association property="memberVO" javaType="MemberVO">
+			<id property="email" column="M_EMAIL" />
+			<result property="name" column="NAME" />
+			<result property="point" column="POINT" />
+		</association>
+	</resultMap>
+	
+	<insert id="insertNotice" parameterType="NoticeVO">
+		INSERT INTO NOTICE (
+  							ID
+  							, SUBJECT
+  							, CONTENT
+  							, EMAIL
+  							, CRT_DT
+  							, MDFY_DT
+  							, FILE_NAME
+  							, ORIGIN_FILE_NAME
+   						  ) 
+		VALUES ( 			
+					NOTICE_ID_SEQ.NEXTVAL
+					, #{subject}
+					, #{content}
+					, #{email}
+					, SYSDATE
+					, SYSDATE
+					, #{fileName}
+					, #{originFileName}
+		)
+	</insert>
+	
+	<update id="updateNotice" parameterType="NoticeVO"></update>
+	
+	<select id="selectOneNotice" parameterType="_int" resultMap="noticeResultMap">
+		SELECT	B.ID
+  				, B.SUBJECT
+  				, B.CONTENT
+  				, B.EMAIL B_EMAIL
+  				, B.CRT_DT
+  				, B.MDFY_DT
+  				, B.FILE_NAME
+  				, B.ORIGIN_FILE_NAME 
+  				, M.EMAIL M_EMAIL
+  				, M.NAME
+  				, M.POINT
+		FROM	NOTICE B
+				, MEMBERS M
+		WHERE	B.EMAIL = M.EMAIL
+		AND		ID = #{id}
+	</select>
+	
+	<delete id="deleteOneNotice" parameterType="_int">
+		DELETE	NOTICE
+		WHERE	ID = #{id}
+	</delete>
+
+	<select id="selectAllNoticesCount" parameterType="NoticeSearchVO" resultType="_int">
+		SELECT	COUNT(1)
+		FROM	NOTICE B
+				, MEMBERS M
+		WHERE	B.EMAIL = M.EMAIL
+	</select>
+
+	<select id="selectAllNotices" parameterType="NoticeSearchVO" resultMap="noticeResultMap">
+		SELECT	*
+		FROM	(
+					SELECT	A.*
+							, ROWNUM RNUM
+					FROM	(
+								SELECT	B.ID
+						  				, B.SUBJECT
+						  				, B.CONTENT
+						  				, B.EMAIL B_EMAIL
+						  				, B.CRT_DT
+						  				, B.MDFY_DT
+						  				, B.FILE_NAME
+						  				, B.ORIGIN_FILE_NAME 
+						  				, M.EMAIL M_EMAIL
+						  				, M.NAME
+						  				, M.POINT
+								FROM	NOTICE B
+										, MEMBERS M
+								WHERE	B.EMAIL = M.EMAIL
+								ORDER	BY ID DESC
+							) A
+					WHERE	ROWNUM <![CDATA[<=]]> #{endRow}
+				)
+		WHERE	RNUM >= #{startRow}
+	</select>	
+		
+</mapper>
